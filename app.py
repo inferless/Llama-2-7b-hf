@@ -1,5 +1,6 @@
 from threading import Thread
 from typing import Iterator
+import os
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer
@@ -59,12 +60,13 @@ class InferlessPythonModel:
     def initialize(self):
         self.tokenizer = AutoTokenizer.from_pretrained(model_id, use_auth_token='<your_token>')
 
+        token = os.getenv("HF_TOKEN")
         if torch.cuda.is_available():
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_id,
                 torch_dtype=torch.float16,
                 device_map='auto',
-                use_auth_token='<your_token>'
+                use_auth_token=token
             )
         else:
             self.model = None
