@@ -7,8 +7,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStream
 model_id = 'meta-llama/Llama-2-7b-chat-hf'
 
 class InferlessPythonModel:
-    def get_prompt(self, message: str, chat_history: list[tuple[str, str]],
-               system_prompt: str) -> str:
+    def get_prompt(self, message, chat_history,
+               system_prompt):
         texts = [f'[INST] <<SYS>>\n{system_prompt}\n<</SYS>>\n\n']
         for user_input, response in chat_history:
             texts.append(f'{user_input.strip()} [/INST] {response.strip()} </s><s> [INST] ')
@@ -16,19 +16,19 @@ class InferlessPythonModel:
         return ''.join(texts)
 
     
-    def get_input_token_length(self, message: str, chat_history: list[tuple[str, str]], system_prompt: str) -> int:
+    def get_input_token_length(self, message, chat_history, system_prompt):
         prompt = self.get_prompt(message, chat_history, system_prompt)
         input_ids = self.tokenizer([prompt], return_tensors='np')['input_ids']
         return input_ids.shape[-1]
 
 
-    def run_function(self, message: str,
-        chat_history: list[tuple[str, str]],
-        system_prompt: str,
-        max_new_tokens: int = 1024,
-        temperature: float = 0.8,
-        top_p: float = 0.95,
-        top_k: int = 50) -> list[str]:
+    def run_function(self, message,
+        chat_history,
+        system_prompt,
+        max_new_tokens,
+        temperature,
+        top_p,
+        top_k):
         prompt = self.get_prompt(message, chat_history, system_prompt)
         inputs = self.tokenizer([prompt], return_tensors='pt').to('cuda')
 
