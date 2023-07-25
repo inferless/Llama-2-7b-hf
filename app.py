@@ -83,10 +83,3 @@ class InferlessPythonModel:
     def finalize(self):
         self.tokenizer = None
         self.model = None
-
-
-model = InferlessPythonModel()
-model.initialize()
-a = model.infer({"message": "How can I count all the stars in the sky?", "chat_history": [], "system_prompt": ""})
-
-print(a)
