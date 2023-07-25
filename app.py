@@ -58,7 +58,7 @@ class InferlessPythonModel:
 
 
     def initialize(self):
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id, use_auth_token='<your_token>')
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id, use_auth_token='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')
 
         if torch.cuda.is_available():
             self.model = AutoModelForCausalLM.from_pretrained(
