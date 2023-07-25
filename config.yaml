@@ -1,5 +1,7 @@
 build:
   system_packages:
+    - "libssl-dev"
+    - "libtesseract-dev"
   python_packages:
     - "accelerate==0.21.0"
     - "bitsandbytes==0.40.2"
@@ -10,9 +12,6 @@ build:
     - "jmespath==1.0.1"
     - "mediapipe==0.10.1"
     - "numpy==1.24.3"
-    - "onnx==1.14.0"
-    - "onnxruntime==1.15.1"
-    - "opencv-contrib-python==4.8.0.74"
     - "optimum==1.9.1"
     - "pandas==2.0.3"
     - "Pillow==10.0.0"
@@ -27,7 +26,6 @@ build:
     - "xformers==0.0.20"
     - "gradio==3.37.0"
     - "protobuf==3.20.3"
-    - "scipy==1.11.1"
     - "sentencepiece==0.1.99"
     - "torch==2.0.1"
     - "transformers==4.31.0"
