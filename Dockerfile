@@ -1,6 +1,6 @@
 FROM nvcr.io/nvidia/tritonserver:23.06-py3
 
-RUN apt update && apt -y install libssl-dev tesseract-ocr libtesseract-dev ffmpeg
+RUN apt update
 
 RUN pip install --upgrade pip
 
