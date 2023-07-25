@@ -25,10 +25,10 @@ class InferlessPythonModel:
     def run_function(self, message,
         chat_history,
         system_prompt,
-        max_new_tokens,
-        temperature,
-        top_p,
-        top_k):
+        max_new_tokens=1024,
+        temperature=0.8,
+        top_p=0.95,
+        top_k=5):
         prompt = self.get_prompt(message, chat_history, system_prompt)
         inputs = self.tokenizer([prompt], return_tensors='pt').to('cuda')
 
