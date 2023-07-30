@@ -58,14 +58,14 @@ class InferlessPythonModel:
 
 
     def initialize(self):
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id, use_auth_token='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')
-
+        token = "<Your HF Token >"
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id, use_auth_token=token)
         if torch.cuda.is_available():
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_id,
                 torch_dtype=torch.float16,
                 device_map='auto',
-                use_auth_token="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"
+                use_auth_token=token
             )
         else:
             self.model = None
