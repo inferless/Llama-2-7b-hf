@@ -3,12 +3,9 @@ import torch
 
 class InferlessPythonModel:
     def initialize(self):
-        self.tokenizer = AutoTokenizer.from_pretrained("NousResearch/Llama-2-13b-chat-hf", use_fast=True)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            "NousResearch/Llama-2-13b-chat-hf",
-            torch_dtype=torch.float16,
-            device_map="cuda"
-        )
+        model_id = "meta-llama/Llama-2-7b-chat-hf"
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=True)
+        self.model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.float16, device_map="cuda")
 
     def infer(self, inputs):
         prompt = inputs["prompt"]
@@ -28,5 +25,3 @@ class InferlessPythonModel:
 
     def finalize(self):
         self.model = None
-        self.tokenizer = None
-        torch.cuda.empty_cache()
