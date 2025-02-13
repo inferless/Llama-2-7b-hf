@@ -33,45 +33,6 @@ Select the PyTorch as framework and choose **Repo(custom code)** as your model s
 After the create model step, while setting the configuration for the model make sure to select the appropriate runtime.
 
 Enter all the required details to Import your model. Refer [this link](https://docs.inferless.com/integrations/github-custom-code) for more information on model import.
-
-The following is a sample Input and Output JSON for this model which you can use while importing this model on Inferless.
-
-### Input
-```json
-{
-  "inputs": [
-    {
-      "data": [
-        "How to count all the stars in the night sky?"
-      ],
-      "name": "message",
-      "shape": [
-        1
-      ],
-      "datatype": "BYTES"
-    }
-  ]
-}
-```
-
-### Output
-```json
-{
-  "outputs": [
-    {
-      "data": [
-        "Result"
-      ],
-      "name": "generated_text",
-      "shape": [
-        1
-      ],
-      "datatype": "BYTES"
-    }
-  ]
-}
-```
-
 ---
 ## Curl Command
 Following is an example of the curl command you can use to make inference. You can find the exact curl command in the Model's API page in Inferless.
